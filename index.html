@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+        <!-- favicon  -->
+  <link rel="shortcut icon" href="./images/heart.png" type="image/x-icon" />
+    <!-- daisyUi CDN  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font awesome CDN  -->
+    <script
+      src="https://kit.fontawesome.com/014e5a97b0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Peddy</title>
+  </head>
+  <body class="font-Lato">
+    <header class="w-10/12 mx-auto">
+      <nav>
+        <div class="grid grid-cols-3 w-full py-5 items-center justify-center">
+          <div class="col-span-3 md:col-span-1">
+            <a class="btn btn-ghost text-xl"
+              ><img src="./images/logo.webp" alt="" />Peddy</a
+            >
+          </div>
+          <div class="col-span-2 md:col-span-1">
+            <ul
+              class="flex gap-5 justify-start md:justify-center items-center text-gray-500 cursor-pointer"
+            >
+              <li><a>Home</a></li>
+              <li><a>Shop</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
+          <div
+            class="cursor-pointer md:text-right flex justify-end col-span-1 md:col-span-1"
+          >
+            <i
+              class="fa-regular fa-user rounded-full shadow-xl p-3 border border-gray-200"
+            ></i>
+          </div>
+        </div>
+      </nav>
+
+      <section>
+        <div
+          class="text-center py-5 mt-5 md:w-10/12 w-11/12 space-y-1 lg:w-7/12 mx-auto"
+        >
+          <div class="">
+            <p class="text-gray-500 md:text-2xl flex justify-center">
+              Bringing Families Together
+              <img class="md:w-8 w-5 h-fit object-cover" src="./images/heart.png" alt="" />
+            </p>
+            <h2 class="md:text-5xl text-3xl font-bold py-6">
+              Your Path to Adoption Starts Here
+            </h2>
+            <p class="pb-7">
+             Your journey to pet adoption begins with love and commitment. Explore shelters, find your perfect companion, and create a lifelong bond filled with joy and companionship.
+            </p>
+            <button class="btn bg-blueTransparent text-white hover:text-black">
+              <a href="#Adopt" >View More</a>
+            </button>
+          </div>
+          <div class="pt-8">
+            <img src="./images/pet.webp" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section id="Adopt" >
+        <div class="text-center py-5 lg:w-8/12 mx-auto">
+          <h2 class="font-bold text-2xl py-4">Adopt Your Best Friend</h2>
+          <p class="text-gray-500">
+            Bring home a loving pet who will fill your life with joy, companionship, and unforgettable memories. Transform a life; change your own.
+          </p>
+        </div>
+
+        <!-- Dynamic Button  -->
+        <div
+          id="daynamicBtn"
+          class="grid grid-cols-2 mt-6 py-5 md:grid-cols-4 gap-4"
+        >
+        
+        </div>
+        <div class="flex justify-between py-4 mt-4">
+          <h3 class="font-semibold  md:text-2xl">Best Deal For you</h3>
+  <button id="sort" class="btn bg-blueTransparent  border-none text-white hover:text-black">Sort by Price</button>
+        </div>
+
+        <div id="loading" class="mx-auto text-center hidden">
+          <span class="loading loading-infinity loading-lg"></span>
+        </div>
+        <!-- Card Start Here  -->
+        <div id="cards" class="grid md:grid-cols-5 gap-4 mt-5">
+          <!-- Daynamic Card  -->
+          <div class="col-span-4">
+            <div id="daynamicCard" class="grid lg:grid-cols-3 md:grid-cols-2  gap-3">
+              
+            </div>
+          </div>
+          <!-- Daynamic Show Card Image   -->
+          <div class="md:col-span-1 col-span-4">
+              <div id="daynamicImg" class="mt-5 grid grid-cols-2 gap-2">
+                
+            </div>
+          </div>
+
+        </div>
+          <div class="hidden " id="error"></div>
+
+      </section>
+    </header>
+
+    <!-- modal for Adopt Button  -->
+<div class="">
+<dialog id="my_modal_1" class="modal ">
+  <div class="modal-box bg-black text-white">
+    <img src="images/handSheak.png" alt="" class="mx-auto ">
+    <h3 class=" font-bold text-center text-3xl">Congress!!</h3>
+    <p class="py-4 text-center">Adopt Done</p>
+    <p id="countdown" class="pt-4 text-center text-gray-300 text-4xl font-bold"></p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-error">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+</div>
+
+<!-- Modal For Details Button  -->
+ <div id="DetailsModal">
+  <dialog id="my_modal_4" class="modal">
+  <div class="modal-box w-10/12 md:w-6/12 max-w-5xl">
+    <div class="">
+      <figure>
+        <img id="petImage" src="" class="w-96 object-cover mx-auto rounded-lg" alt="Pet Image"/>
+      </figure>
+      <div class="card-body">
+        <p class="card-title font-bold " id="petName"></p>
+        <div class="grid grid-cols-2">
+          <p><i class="fa-solid fa-qrcode"></i> Breed: <span id="breed"></span></p>
+        <p><i class="fa-solid fa-calendar-days"></i> Birth: <span id="birthDate"></span></p>
+        </div>
+        <div class="grid grid-cols-2">
+          <p><i class="fa-solid fa-venus"></i> Gender: <span id="gender"></span></p>
+        <p><i class="fa-solid fa-dollar-sign"></i> Price: <span id="price"></span></p>
+        </div>
+        <p id="petDetails" class="font-bold text-2xl">Details:</p>
+         <p id="details" class="text-gray-600"></p>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <form method="dialog">
+        <button class="btn btn-primary ">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+ </div>
+ <!-- Footer Start Here  -->
+    <footer class="bg-footerBg text-white">
+          <div class="md:flex block  md:justify-between w-10/12 mx-auto my-4 pt-8">
+            <div >
+              <h2
+                class="mb-6 text-sm font-semibold  uppercase  flex gap-2"
+              >
+                <img src="./images/logo.webp" alt=""> Peddy
+              </h2>
+              <ul class=" font-medium">
+                <li class="mb-2">Location: av. Washington 165, NY CA 54003
+                </li>
+                <li class="mb-1">Phone: +31 85 964 47 25</li>
+                <li class="mb-1">Email: info@yourdomain.com</li>
+                <li class="mb-1">Openings hours: 9.00 AM - 5.00 PM</li>
+              </ul>
+              
+              <div class="socialMedia flex gap-3 mt-5">
+                <img class="w-10 cursor-pointer" src="./images/facebook.png" alt="">
+                <img class="w-10 cursor-pointer" src="./images/instagram.png" alt="">
+                <img class="w-10 cursor-pointer" src="./images/twitter.png" alt="">
+                <img class="w-10 cursor-pointer" src="./images/youtube.png" alt="">
+              </div>
+            </div>
+            <div >
+              <h2
+                class="md:mb-6 mb-3 text-sm font-semibold  uppercase  md:mt-0 mt-6"
+              >
+                Useful Links
+              </h2>
+              <ul class=" font-medium">
+                <li class="mb-1 cursor-pointer">Home </li>
+                <li class="mb-1 cursor-pointer">About Us </li>
+                <li class="mb-1 cursor-pointer">Animals </li>
+                <li class="mb-1 cursor-pointer">Foundation </li>
+                <li class="mb-1 cursor-pointer">Contack </li>
+              </ul>
+
+            </div>
+            <div >
+              <h2
+                class="md:mb-6 mb-3 md:mt-0 mt-6 text-sm font-semibold  uppercase "
+              >
+                Drop a Message
+              </h2>
+              <label for="email" ">
+                <input class="mb-4 w-full border-none p-3 outline-none rounded-lg bg-gray-400 placeholder:text-white text-white" type="email" placeholder="Enter Your Email">
+              </label>
+              <br>
+              <button class="btn bg-blueTransparent text-white font-bold w-full hover:bg-transparent border-none">Susbcribe</button>
+            </div>
+          </div>
+        <hr
+          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+        />
+        <div class="sm:flex sm:items-center sm:justify-between pl-4">
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+            >© 2024 Aminul All Rights Reserved.
+          </span>
+         
+        </div>
+      </div>
+    </footer>
+    
+    <!-- tailwind coustomise  -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blueTransparent: "rgba(14, 122, 129, 1)",
+              btnTextColor: "rgba(14, 122, 129, 1)",
+              footerBg: "rgba(19, 19, 19, 1)",
+            },
+            backgroundImage: {},
+            fontFamily: {
+              Lato: "Lato",
+            },
+          },
+        },
+      };
+    </script>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
